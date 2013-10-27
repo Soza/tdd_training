@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Legacy Code Refactoring</title>
+		<meta name="author" content="Sabby Anandan">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">		
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>Legacy Code Refactoring</h1><br>															
+					<br/>	
+					<br/>
+					<p>
+						<medium>Sabby Anandan</medium> 
+					</p>
+				</section>
+
+				<section>
+					<h1>Goal</h1>
+					<blockquote>
+						<p>
+							&ldquo;To increase customer satisfaction and service through more frequent delivery of <b><u>value</u></b>.&rdquo;
+						</p>
+					</blockquote>					
+				</section>	
+
+				<section>					
+					<section>
+						<h1>We have a problem!</h1><br>					
+					</section>
+					<section>
+						<p class="roll-in image"><img src="img/refactoring/OLA.png" style="border:none;"></p><br>					
+					</section>
+				</section>
+
+				<section>
+					<section><h1>Has this happened to you?</h1></section>
+					<section data-background="img/refactoring/normal.gif">
+					</section>
+					<section data-background="img/refactoring/type.gif">
+					</section>					
+				</section>
+
+				<section>										
+					<section>
+						<h1>Legacy Code</h1><br>									
+						<blockquote>
+						<p class="fragment roll-in image"><img src="img/refactoring/legacy2.gif" style="border:none;"></p><br>	
+						<small><footer class="fragment" data-fragment-index="2">Source: http://dilbert.com/strips/comic/2006-12-08/</footer></small>
+					</section>
+				</section>
+				
+				<section>										
+					<h2>Why Change?</h2><br>
+					<div class="columnOne">
+						<h4>New Feature</h4>
+						<input id="k1" class="knob" data-width="180" data-angleOffset="180" data-fgColor="#333333" data-skin="tron" data-thickness=".5" value="25" data-displayInput=false>	
+						<h4>Bug Fixing</h4>
+						<input id="k2" class="knob" data-width="180" data-angleOffset="180" data-fgcolor="#CC0000" data-skin="tron" data-thickness=".5" data-displayInput=false>
+					</div>
+					<div class="columnTwo">
+						<h4>Improvement</h4>
+						<input id="k3" class="knob" data-width="180" data-angleOffset="180" data-fgColor="#FCCA03" data-skin="tron" data-thickness=".5" value="75" data-displayInput=false>	
+						<h4>Optimization</h4>
+						<input id="k4" class="knob" data-width="180" data-angleOffset="180" data-fgColor="#66CC66" data-skin="tron" data-thickness=".5" value="100" data-displayInput=false>
+					</div>										
+				</section>
+
+				<section>					
+					<h1>Change Matrix</h1><br>					
+					<p class="fragment roll-in image"><img src="img/refactoring/change.png" style="border:none;"></p><br>					
+				</section>
+
+				<section>
+					<section>
+						<h1>Refactoring</h1><br>				
+						<blockquote class="fragment">
+							<p><span>"A change made to the internal structure of software to make it <u>easier to understand</u> and <u>cheaper to modify</u> without changing its <b>behavior</b>"</span><br></p>
+						</blockquote>		
+					</section>
+					<section><h1>Why Refactor?</h1></section>					
+					<section data-state="lila">
+						<h1>Why do we workout?</h1>
+					</section>
+					<section data-background="#BADA55">
+						<h1>Why do we do health checkup?</h1>
+					</section>
+					<section data-state="cobalt">
+						<h1>Why do we maintain our car?</h1>
+					</section>
+					<section data-state="sunset">
+						<h1>...., and drink beer?!</h1><br>
+						<h1 class="fragment grow">&#9787;</h1>
+					</section>
+				</section>	
+
+				<section>	
+					<section>
+						<h1>It's no silver-bullet</h1><br>
+						<h2 class="fragment">Yet, it is a valuable tool!</h2>								
+					</section>
+					<section data-state="sunset">
+						<h2>Improves Design of Software</h2>
+					</section>
+					<section data-state="cobalt">
+						<h2>Makes Software Easy to Understand</h2>
+					</section>
+					<section data-state="alert">
+						<h1>Helps you Find Bugs</h1>
+					</section>
+					<section data-state="mint">
+						<h1>Helps you Program Faster</h1><br>						
+					</section>
+				</section>															
+
+				<section data-background="img/refactoring/office-space.jpg">
+					<h2 class="yellow">What do I Tell My Manager?</h2><br><br>
+					<p class="fragment roll-in image"><img src="img/refactoring/fowler.png" style="border:none;"></p><br>					
+				</section>						
+								
+				<section>
+					<h2>Change Algorithm</h2><br>						
+					<p>
+						<ol>
+							<li class="fragment roll-in">Identify <strong>change points</strong></li>
+							<li class="fragment roll-in">Find <strong>test points</strong></li>
+							<li class="fragment roll-in">Break <strong><em>dependencies</em></strong></li>
+							<li class="fragment roll-in">Write <em>tests</em></span></li>
+							<li class="fragment roll-in">Make changes and <strong><em>refactor</em></strong></li>
+						</ol>								
+					</p>					
+				</section>		
+
+				<section>
+					<section>
+						<h1>Indetify Change Points</h1><br>					
+					</section>		
+					<section data-background="img/refactoring/time.jpg">
+						<h1 class="yellow">Client wants this.. can we get it done today?</h1>						
+					</section>
+					<section>
+						<h2>I Don't Understand the Code Well Enough to Change It</h2><br>
+						<ul>
+							<li class="fragment">It's not easy without experience</li>
+							<li class="fragment">White Board | Sketching</li>
+							<li class="fragment">UML Diagrams</li>									
+							<li class="fragment">Scratch Refactoring</li>									
+							<li class="fragment">But, you need tests &#12484; (dilemma?)</li>									
+						</ul>
+					</section>
+					<section>
+						<h2>My Application Has No Structure</h2><br>
+						<ul>
+							<li class="fragment">It's difficult to Change</li>
+							<li class="fragment">Single Ownership?</li>									
+							<li class="fragment">Story-like Narration</li>									
+							<li class="fragment">Collaborate</li>									
+							<li class="fragment">ROI = Refactor or Rewrite? &#12485;</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Find Test Points</h1><br>					
+					</section>		
+					<section>
+						<h2>I Need to Make A Change What to Test?</h2><br>
+						<p class="fragment">Solution = Write tests for the method that we change</p>	
+					</section>
+					<section>
+						<h3>I Need to Make Changes in One Area. Do I Have to Break Dependencies?</h3><br>
+						<p class="fragment">Write Higher-level Tests</p><br>
+						<p class="fragment">Find the <b>Interception Point</b></p>	
+					</section>
+					<section>			
+						<h2>Invoice Contract</h2>			
+						<pre class="fragment"><code data-trim contenteditable>
+public class Invoice() {
+   ...
+   ...
+   public Money getValue(){
+      Money total = itemSum();
+      if(billingDate.after(Date.yearEnd(openingDate))){
+      	if(originator.getState().equals("NY")
+      		|| originator.getState().equals("FL")){
+      	   total.add(getLocalShipping());
+      	} else{
+      	   total.add(getDefaultShipping());
+        }
+      }
+      return total;
+   }
+}
+						</code></pre><br>						
+					</section>
+					<section>			
+					<h2>Extract Class</h2><br>
+					<pre class="fragment"><code data-trim contenteditable>
+public class Invoice() {   
+   public Money getValue(){
+      Money total = itemSum();
+      total.add(shippingPricer.getPrice());
+      return total;
+   }
+}
+					</code></pre><br>
+					<pre class="fragment"><code data-trim contenteditable>
+public class ShippingPricer() {   
+   public Double getPrice(){
+      // evaluate business rules      
+      .... // include new tax specs
+   }
+}
+					</code></pre><br>						
+					</section>	
+				</section>						
+
+				<section>
+					<section>
+						<h1>Break Dependencies</h1><br>					
+					</section>		
+					<section>
+						<h2>How Do I Know That I'm Not Breaking Anything?</h2><br>
+						<ul>
+							<li class="fragment">Hyperware Editing</li>
+							<li class="fragment">Single Goal Editing</li>
+							<li class="fragment">Preserve Signatures</li>									
+							<li class="fragment">Lean on the Compiler</li>									
+							<li class="fragment">Pair Programming</li>									
+						</ul><br>
+					</section>
+					<section>
+						<h2>I Can't Get This Class into a Test Harness</h2><br>
+						<div class="fragment">
+							<p>Irritating Parameter / Adapt Parameter</p>
+							<p class="grey">Scenario: Wrapping HttpServletRequest</p>
+						</div><br>			
+						<p class="fragment">Null Object Pattern</p>													
+							<pre class="fragment"><code data-trim contenteditable>
+for (Iterator itr = list.iterator(); itr.hasNext();) {
+    EmployeeId id = (EmployeeId) itr.next();
+    Employee e = finder.getEmployeeById(id);
+    e.pay();            
+}
+					</code></pre><br>												
+						<p class="fragment">Onion Parameter</p>													
+					</section>
+					<section>
+						<h2>I Need to Change a Monster Method and I can't Write Test for It</h2>						
+					</section>
+					<section>
+						<h1>Extract Interface</h1><br>
+						<h3 class="fragment red">Create Interfaces</h3><br>
+						<div class="fragment grey">
+							<p>Scenario: Payday Transaction and Logging</p><br>
+						</div>
+					</section>
+					<section>
+						<h1>Break Out Method Object</h1><br>
+						<h2>Tough to work methods? Hard to test?</h2><br>
+						<h3 class="fragment red">Move a long method to a new class</h3><br>
+						<div class="fragment grey">
+							<p>Scenario: Detail Object Mapping | Server-side Validation</p><br>
+						</div>					
+					</section>
+					<section>
+						<h1>Sprout Method</h1><br>
+						<h2>Adding a new feature to a long method?</h2><br>
+						<h3 class="fragment red">Write it as a new method instead</h3><br>
+						<div class="fragment grey">
+							<p>Scenario: System - Add New Functionality</p><br>
+						</div>
+					</section>
+					<section>
+						<h1>Wrap Method</h1><br>
+						<h3>Adding something new to fit-in and execute at the same time?</h3><br>
+						<h3 class="fragment red">Create a wrap method</h3><br>
+						<div class="fragment grey">
+							<p>Scenario: System - Create and Send Email</p><br>							
+						</div>
+					</section>
+					<section>
+						<h2>It Takes Forever to Make a Change</h2><br>
+					</section>
+					<section>
+						<h2>Instance Delegator</h2><br>
+						<h3>Static or Utility Calls + Difficult Dependency?</h3><br>
+						<h3 class="fragment red">Introduce delegating instance methods</h3><br>
+						<div class="fragment grey">
+							<p>Scenario: User authorization</p><br>							
+						</div>
+					</section>
+					<section>
+						<h1>Pull Up Feature</h1><br>
+					</section>
+					<section>
+						<h1>Push Down Dependency</h1><br>
+					</section>
+					<section>
+						<h2>Subclass and Override</h2><br>
+						<h3>Using inheritance in the context of tests</h3><br>
+						<h3 class="fragment red">Get access to behavior that you care about</h3><br>
+						<div class="grey"> 
+							<p class="fragment">Scenario: App Action Override</p>
+							<p class="fragment">Scenario: Email Functionality Stubs</p>						
+							<p class="fragment">Scenario: Log EhCache Statistics - Test Obstacles</p>
+						</div>
+					</section>
+					<section>
+						<h2>Extract and Override Call</h2><br>
+						<h3>Working with localized dependencies?</h3><br>
+						<h3 class="fragment red">Extract to a new method and override for testing</h3><br>
+						<div class="grey"> 
+							<p class="fragment">Scenario: Mailer</p>							
+						</div>
+					</section>
+					<section>
+						<h2>Extract and Override Factory Method</h2><br>												
+						<pre class="fragment"><code data-trim contenteditable>
+public class WorkFlowEngine {
+    public WorkFlowEngine() {
+        final Reader reader = new ModelReader();
+        this.tm = new TransactionManager(reader, persister);
+    }
+}
+					</code></pre>
+					<pre class="fragment"><code data-trim contenteditable>
+public class WorkFlowEngine {
+
+    public WorkFlowEngine() {
+        final Reader reader = new ModelReader();
+        this.tm = this.makeTransactionManager();
+    }
+
+    protected TransactionManager makeTransactionManager() {
+        return new TransactionManager(reader, persister);
+    }
+}
+					</code></pre><br>
+					</section>
+					<section>
+						<h2>Parameterize Constructor</h2><br>							
+						<h3>Creating an object in constructor?</h3>
+						<pre class="fragment"><code data-trim contenteditable>
+public class MailChecker {
+
+    public MailChecker(final int checkPeriodSeconds) {
+        this.receiver = new MailReceiver();
+        this.checkPeriodSeconds = checkPeriodSeconds;
+    }
+
+    // ...
+}				</code></pre>
+					<pre class="fragment"><code data-trim contenteditable>
+public class MailChecker {
+
+    public MailChecker(final int checkPeriodSeconds) {
+        this.receiver = new MailReceiver();
+        this.checkPeriodSeconds = checkPeriodSeconds;
+    }
+
+    public MailChecker(final MailReceiver receiver, 
+    			final int checkPeriodSeconds) {
+        this.receiver = receiver;
+        this.checkPeriodSeconds = checkPeriodSeconds;
+    }
+
+    // ...
+}
+					</code></pre><br>
+					</section>															
+				</section>
+
+				<section>
+					<section>
+						<h1>Write Tests</h1>
+					</section>
+					<section>
+						<h2>I Need to Make a Change but I Don't Know What Tests to Write</h2><br>
+						<p class="fragment">Characterization Tests - <em>to preserve the behavior</em></p><br>
+						<ul class="fragment">
+							<li>Try writing tests</li>
+							<li>Assert that you know will fail</li>
+							<li>Learn the behavior from failure</li>									
+							<li>Adapt the test to the behavior</li>									
+							<li>Repeat</li>									
+						</ul><br><br>
+						<p class="fragment">Targeted Tests - <em>to see if our tests really cover all aspects</em></p><br>						
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Make Changes and Refactor</h1>
+					</section>
+					<section>
+						<h2>How Do I Add a New Feature?</h2><br>
+						<h3 class="fragment">Test-driven Development</h3>
+					</section>
+					<section>
+						<h2>This Class is Too Big and I Don't Want It to Get Any Bigger</h2><br>
+						<ul class="fragment">
+							<li>Hard to Read</li>
+							<li>Creates Confusion</li>
+							<li>Too Many Instance Variables</li>									
+							<li>Several Responsibilities and Dependencies</li>									
+							<li><b>Pain to Test</b></li>									
+						</ul><br>
+					</section>
+					<section>
+						<h2>Change Algorithm</h2><br>
+						<ul>
+							<li class="fragment">Group Methods</li>
+							<li class="fragment">Look for Hidden Methods</li>
+							<li class="fragment">Look for Decisions that Can Change</li>									
+							<li class="fragment">Look for Internal Relationships</li>									
+							<li class="fragment">Resposibility in Single Sentence</li>									
+							<li class="fragment">Small Steps + Pay Attention</li>									
+						</ul><br>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Closure</h1><br>
+						<ul>
+							<li class="fragment">You Learned Techniques</li>
+							<li class="fragment">You've Gotten Good at Testing</li>
+							<li class="fragment">You're Confident</li>									
+						</ul><br><br>
+						<h2 class="fragment red">Do you know how to refactor now?</h2>						
+					</section>
+					<section>
+						<h2 class="fragment grow">No - This is Only the Beginning!</h2><br>
+						<ul class="fragment">
+							<li>Pick a Goal</li>
+							<li>Stop when unsure</li>
+							<li>Backtrack</li>									
+							<li>Pair Program</li>									
+						</ul>
+					</section>
+				</section>									
+				
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="lib/js/jquery-ui.js"></script>
+		<script src="lib/js/jquery.knob.js"></script>
+
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'serif', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				backgroundTransition: 'slide',
+				
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]					
+			});
+
+			function currentPageFormatter(event) {
+		        var formattedStr;
+		        if (event.indexh === 0) {
+		            return "";
+		        }
+		        formattedStr = event.indexh;
+		        if (event.indexv) {
+		            formattedStr += "/" + event.indexv;
+		        }
+		 		return formattedStr;
+		    }
+		 
+		    Reveal.addEventListener( 'ready', function( event ) {
+		        $('<aside class="controls slide-number" style="display: block; left: 10px; right: initial;bottom: -30px; text-align: center;"></aside>')
+		            .text(currentPageFormatter(event))
+		            .appendTo('.reveal.center');
+		    });
+		 
+		    // Fires each time a new slide is activated
+		    Reveal.addEventListener( 'slidechanged', function( event ) {
+		        var slideStr = currentPageFormatter(event);		        
+		        $(".slide-number").text(slideStr);
+		        if(slideStr && slideStr === 5){		        	
+		        	$('#k1').val('');
+		        	$('#k2').val('');
+		        	$('#k3').val('');
+		        	$('#k4').val('');
+		        	knobRenderer(); 
+		        }
+		    });
+
+		    $(function() {
+			    $( "#progressbar1" ).progressbar({
+			      value: false
+				});
+				$( "#progressbar2" ).progressbar({
+			      value: false
+				});
+				$( "#progressbar3" ).progressbar({
+			      value: false
+				});		
+
+				$(".knob").knob({                    
+					readOnly: true, step: 5
+                });		
+			});					   
+
+            function knobRenderer() {
+            	var ss = parseInt($('#k1').val()) + 10;            	
+            	$('#k1').val(ss).trigger('change');
+            	$('#k2').val(ss).trigger('change');
+            	$('#k3').val(ss).trigger('change');
+            	$('#k4').val(ss).trigger('change');
+            	if($('#k1').val() < 100){            		
+            		setTimeout("knobRenderer()", 300);
+            	}            	
+	        }
+
+		</script>
+
+	</body>
+</html>
