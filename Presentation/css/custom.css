@@ -1,0 +1,72 @@
+.big-green, .big-red, .big-blue {
+  border-radius: 10px;
+  padding: 5px;
+  background: #000924;
+  border: 1px solid #111;
+  box-shadow: 0 2px 3px #333;
+  position:relative;
+}
+
+.big-green div {
+  background: #1cc300 ;
+  border-radius: 6px;
+  box-shadow: 0 5px 5px #ccc inset;
+  text-indent: 99999px;
+  overflow: hidden;
+}
+.big-red div {
+  background: #ff0000;
+  border-radius: 6px;
+  box-shadow: 0 5px 5px #ccc inset;
+  text-indent: 99999px;
+  overflow: hidden;
+}
+.big-blue div {
+  background: #0080ff ;
+  border-radius: 6px;
+  box-shadow: 0 5px 5px #ccc inset;
+  text-indent: 99999px;
+  overflow: hidden;
+}
+
+#progresstext {
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.reveal .big {
+  font-size: 230%;
+  color: #f92672;
+  font-weight: bold; }
+
+.reveal .yellow {  
+  color: #e1e100;
+  font-weight: bold; 
+}
+
+.reveal .red {  
+  color: #b00b00;
+  font-weight: bold; 
+}
+
+.reveal .grey {  
+  color: #202e74;
+  font-weight: bold; 
+}
+ 
+.reveal .semiBig {
+  font-size: 130%;
+  color: #f92672;
+  font-weight: bold; }
+ 
+.columnOne {
+  width: 50%; 
+  float : left;
+}
+ 
+.columnTwo {
+  width: 50%; 
+  float : right;
+}
+ 
