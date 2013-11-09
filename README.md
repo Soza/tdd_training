@@ -1,3 +1,5 @@
+Summary:
+-------
 Test-driven Development and Legacy code refactoring training deck. This project is built using reveal.js, jQuery.js and other JS libraires and plugins. An HTML5 compatible browser stack can be used to open the deck.
 
 References:
