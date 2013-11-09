@@ -9,3 +9,7 @@ Working Effectively with Legacy Code - Michael Feathers
 Refactoring: Improving the Design of Existing Code - Martin Fowler
 
 Several online blogs and forums
+
+Sample Code:
+-----------
+Code associated with this project includes simple functionalities built using [Java + Junit + Struts + EasyMock] libraries. 
