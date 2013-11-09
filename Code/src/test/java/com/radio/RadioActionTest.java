@@ -10,6 +10,12 @@ import com.person.AbstractStrutsUnitTest;
 import com.radio.RadioAction;
 import com.radio.RadioForm;
 
+/**
+ * Test coverage to reproduce a bug associated with {@link RadioAction}.
+ * 
+ * @author Sabby Anandan
+ * 
+ */
 public class RadioActionTest extends AbstractStrutsUnitTest {
 
 	RadioAction action;

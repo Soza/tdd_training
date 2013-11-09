@@ -13,6 +13,13 @@ import org.junit.Test;
 
 import com.person.PersonCRUDAction;
 
+/**
+ * Test coverage to capture simple person CRUD {@link PersonCRUDAction}
+ * operation.
+ * 
+ * @author Sabby Anandan
+ * 
+ */
 public class PersonCRUDActionTest extends AbstractStrutsUnitTest {
 	PersonCRUDAction personAction;
 	SomeUserService someUserService;
